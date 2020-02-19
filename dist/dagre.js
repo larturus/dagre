@@ -1384,17 +1384,7 @@ function order(g) {
   var bestCC = Number.POSITIVE_INFINITY,
     best;
 
-  for (var i = 0, lastBest = 0; lastBest < 4; ++i, ++lastBest) {
-    sweepLayerGraphs(i % 2 ? downLayerGraphs : upLayerGraphs, i % 4 >= 2);
-
-    layering = util.buildLayerMatrix(g);
-    var cc = crossCount(g, layering);
-    if (cc < bestCC) {
-      lastBest = 0;
-      best = _.cloneDeep(layering);
-      bestCC = cc;
-    }
-  }
+  best = _.cloneDeep(util.buildLayerMatrix(g));
 
   assignOrder(g, best);
 }
@@ -2950,7 +2940,7 @@ function notime(name, fn) {
 }
 
 },{"./graphlib":7,"./lodash":10}],30:[function(require,module,exports){
-module.exports = "0.8.5";
+module.exports = "0.8.6-pre";
 
 },{}],31:[function(require,module,exports){
 /**
